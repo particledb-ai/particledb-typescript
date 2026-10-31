@@ -1,0 +1,61 @@
+{
+  "name": "@particledb/sdk",
+  "version": "0.3.0",
+  "description": "Official TypeScript/Node.js SDK for ParticleDB",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', {recursive:true, force:true})\" && tsc",
+    "test": "node --import tsx --test --test-concurrency=1 tests/arrow_ipc.test.ts tests/client.test.ts tests/driver_surface.test.ts tests/integration.test.ts tests/ops-namespace.test.ts tests/pdb_wire_ambiguous.test.ts tests/unix_socket.test.ts tests/vector_injection.test.ts tests/vector_injection.live.test.ts tests/native_batch_errors.live.test.ts tests/native_default.live.test.ts tests/native_regress.live.test.ts tests/tls.live.test.ts",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "particledb",
+    "database",
+    "vector",
+    "sql",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "Orkes, Inc.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/particledb-ai/particledb-typescript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/particledb-ai/particledb-typescript/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^25.4.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.3.0"
+  },
+  "peerDependencies": {
+    "pg": "^8.11.0"
+  },
+  "peerDependenciesMeta": {
+    "pg": {
+      "optional": true
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "homepage": "https://particledb.ai",
+  "publishConfig": {
+    "access": "public"
+  }
+}
